@@ -1,0 +1,5 @@
+app/code/community/Yotpo/Yotpo                      app/code/community/Yotpo/Yotpo                     
+app/design/adminhtml/default/default/template/yotpo app/design/adminhtml/default/default/template/yotpo
+app/design/frontend/base/default/layout/yotpo.xml   app/design/frontend/base/default/layout/yotpo.xml  
+app/design/frontend/base/default/template/yotpo     app/design/frontend/base/default/template/yotpo    
+app/etc/modules/Yotpo_Yotpo.xml                     app/etc/modules/Yotpo_Yotpo.xml                    
