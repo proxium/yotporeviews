@@ -2,7 +2,7 @@
     "name": "connect20/yotporeviews",
     "type": "magento-module",
     "description": "This extension includes the files of the Yotpo Reviews extension The directories hierarchy is as positioned in a standard magento project library",
-    "version": "1.6.3",
+    "version": "1.6.9",
     "keywords": ["magento", "yotpo", "reviews", "composer-installer"],
     "homepage": "https://github.com/proxium/yotporeviews",
     "license": "OSL-3.0",

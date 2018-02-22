@@ -21,7 +21,6 @@ class Yotpo_Yotpo_Adminhtml_YotpoController extends Mage_Adminhtml_Controller_Ac
 
             foreach (Mage::app()->getStores() as $store) {
                 if ($store->getCode() == $store_code) {
-                    global $current_store;
                     $current_store = $store;
                     break;
                 }
@@ -80,7 +79,7 @@ class Yotpo_Yotpo_Adminhtml_YotpoController extends Mage_Adminhtml_Controller_Ac
                         $order_data = array();
                         if (!$order->getCustomerIsGuest()) {
                             $order_data["user_reference"] = $order->getCustomerId();
-                        }                        
+                        }
                         $order_data['order_id'] = $order->getIncrementId();
                         $order_data["email"] = $order->getCustomerEmail();
                         $order_data["customer_name"] = $order->getCustomerName();
@@ -110,4 +109,9 @@ class Yotpo_Yotpo_Adminhtml_YotpoController extends Mage_Adminhtml_Controller_Ac
 
         Mage::app()->getResponse()->setBody(1);
     } 
+    
+    protected function _isAllowed() 
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('catalog/product');
+    }
 }
