@@ -3,7 +3,7 @@
 <config>
     <modules>
         <Yotpo_Yotpo>
-            <version>1.6.2</version>
+            <version>1.6.4</version>
         </Yotpo_Yotpo>
     </modules>
     
@@ -12,6 +12,11 @@
     		<yotpo>
 	    		<class>Yotpo_Yotpo_Block</class>
     		</yotpo>
+			<catalog>
+                <rewrite>
+					<product_list>Yotpo_Yotpo_Block_Catalog_Product_List</product_list>
+                </rewrite>
+            </catalog>
     	</blocks>
     	<models>
     		<yotpo>

@@ -19,6 +19,7 @@ class Yotpo_Yotpo_Model_Mail_Observer
 
 			$event = $observer->getEvent();
 			$order = $event->getOrder();
+                        $customerData = $order->getData();
 			$store_id = $order->getStoreId();
 			$orderStatuses = Mage::getStoreConfig('yotpo/yotpo_general_group/custom_order_status', $order->getStore());
 			if ($orderStatuses == null) {
@@ -27,10 +28,10 @@ class Yotpo_Yotpo_Model_Mail_Observer
 				$orderStatuses = array_map('strtolower', explode(' ', $orderStatuses));
 			}
 
-            if (!Mage::helper('yotpo/apiClient')->isEnabled($store_id))
-            {
-                return $this;
-            }
+			if (!Mage::helper('yotpo/apiClient')->isEnabled($store_id))
+			{
+				return $this;
+			}
 
 			if (!in_array($order->getStatus(), $orderStatuses)) {
 				return $this;
@@ -39,8 +40,12 @@ class Yotpo_Yotpo_Model_Mail_Observer
 			if (!$order->getCustomerIsGuest()) {
 				$data["user_reference"] = $order->getCustomerId();
 			}
+			$customer_name = $customerData['customer_firstname'].' '.$customerData['customer_lastname'];
+			if($order->getCustomerIsGuest()){
+				$customer_name = $order->getBillingAddress()->getName();
+			}
 			$data["email"] = $order->getCustomerEmail();
-			$data["customer_name"] = $order->getCustomerName();
+			$data["customer_name"] = $customer_name; 
 			$data["order_id"] = $order->getIncrementId();
 			$data["order_date"] = $order->getCreatedAtDate()->toString('yyyy-MM-dd HH:mm:ss');
 			$data['platform'] = 'magento';
